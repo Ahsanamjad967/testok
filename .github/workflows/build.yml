@@ -25,8 +25,9 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y openjdk-11-jdk wget unzip
+        mkdir -p $HOME/sdk/cmdline-tools # Ensure directory is created
         wget "https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip" -O android_cmdline_tools.zip
-        unzip android_cmdline_tools.zip -d $HOME/sdk/cmdline-tools
+        unzip android_cmdline_tools.zip -d $HOME/sdk/cmdline-tools # Extract to the directory
         export ANDROID_SDK_ROOT=$HOME/sdk
         export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/bin
         yes | sdkmanager --sdk_root=$HOME/sdk --licenses
